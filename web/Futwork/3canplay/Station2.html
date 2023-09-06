@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+  <script>
+    document.onkeydown = function(e){
+        document.getElementById("keyboardBtn").innerHTML = "WRONG!!!";
+        var audio = new Audio('error.WAV');
+        audio.play();
+
+        var image = new Image();
+        image.src = "BAD/" + Math.floor(Math.random() * 177 + 1) + ".gif";
+        document.getElementById("image-placeholder").innerHTML = "";
+        document.getElementById("image-placeholder").appendChild(image);
+        image.style.height="500px";
+        image.style.width="1370px";
+        image.style.marginTop="10px";
+        image.style.marginBottom="10px";
+    }
+</script>
+
+
+
+	<title>PASSKiK</title>
+	<style>
+
+
+
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+	
+
+.header {
+  width: 100%;
+  height: 50px;
+  background-color: yellow;
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.placeholder {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: calc(100% - 90px);
+}
+
+.placeholder img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.placeholder span {
+  margin-right: 10px;
+}
+
+.content {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+h1 {
+  margin-top: 50px;
+}
+
+
+
+
+.container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 24px;
+}
+
+.clicks {
+  font-size: 50px;
+}
+
+
+
+.container {
+  background-color: silver;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.placeholder2 {
+  height: 55px;
+  width: 500px;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.green {
+  background-color: green;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.thumbnail {
+  height: 20px;
+  width: 60px;
+  margin-right: 10px;
+}
+
+.text-placeholder {
+  margin-right: 90px;
+}
+
+.number-placeholder {
+  margin-right: 200px;
+}
+
+
+
+
+	</style>
+</head>
+
+<body>
+  <div class="header">
+    <div class="placeholder">
+      <img src="images/logo1.jpg" id="img1">
+      <span class="name" id="name1"style="font-size: 40px;"></span>
+      <div class="digit3-placeholder" style="font-size: 45px;">0</div>
+     
+
+      <img src="images/logo1.jpg" id="img2">
+      <span class="name" id="name2"style="font-size: 40px;"></span>
+      <div class="digit2-placeholder" style="font-size: 45px;">0</div>
+
+      <img src="images/logo1.jpg" id="img3">
+      <span class="name" id="name3" style="font-size: 40px;"></span>
+      <div class="digit-placeholder" style="font-size: 45px;">0</div> 
+    </div>
+  </div>
+
+   
+
+  
+<div class="image-placeholder" id="image-placeholder"></div>
+<!-- your content here -->
+<footer>
+  <div class="container">
+    <div class="placeholder green" style="width: 500px;">
+      <img src="images/logo3.jpg">
+      <div class="content">
+        <button id="shuffle">Shuffle</button>
+      </div> 
+      <div class="Club-placeholder"></div>
+      <div class="digit-placeholder">0</div>  
+    <input type="checkbox" id="click-checkbox" />
+    <label for="click-checkbox">Enable</label>
+    <audio id="correct-sound" src="Correct.wav"></audio>
+  
+    </div>
+    <div class="placeholder yellow" style="width: 500px;">
+      <img src="images/logo3.png">
+      
+      <td align="center"><div id="displayarea2"></div></td>
+      <div class="digit3-placeholder">0</div>
+      <input type="checkbox" id="click-checkbox" />
+      
+      <button id="keyboardBtn"style="width:50px; height: 20px;"></button>
+      <audio id="correct-sound" src="Correct.wav"></audio>
+        
+    </div>
+    <div class="placeholder blue" style="width: 500px;">
+      <img src="images/logo2.png">
+      <td align="center"><div id="displayarea"></div></td>
+      <div class="digit2-placeholder">0</div>
+      <input type="checkbox" id="click-checkbox" />
+        <label for="click-checkbox">Enable</label>
+      <audio id="correct-sound" src="Correct.wav"></audio>
+  </div>
+  </div></div>
+  </ul>
+  </div>
+  </nav>
+  <p>&copy; Kele Buay 2023 PasskiK Football Skill Development Technology</p>
+</footer>
+
+
+
+
+
+<script>
+
+  const names = [
+    'Aleena',
+    'Leona',
+    'Madison',
+    'Khaleem',
+    'Elin',
+    'Olivier N',
+    'Erin',
+    'Toby',
+    'Amir',
+    'Blake',
+    'Mohammad',
+    'Suzanna',
+    'Olivier',
+    'Kian',
+    'Jameela',
+    'IVY',
+    'Izabella',
+    'Roman',
+    'Faraz',
+    'Farez',
+    'Eyma',
+    'Frank',
+    'Claire'
+  ];
+  
+  const shuffleBtn = document.getElementById('shuffle');
+  const img1 = document.getElementById('img1');
+  const img2 = document.getElementById('img2');
+  const img3 = document.getElementById('img3');
+  const name1 = document.getElementById('name1');
+  const name2 = document.getElementById('name2');
+  const name3 = document.getElementById('name3');
+  const clicks1 = document.getElementById('clicks1');
+  const clicks2 = document.getElementById('clicks2');
+  const clicks3 = document.getElementById('clicks3');
+  let shuffledNames = [];
+  
+  function shuffle(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+  
+  
+  
+  
+  let countdownTimer; // variable to hold reference to the countdown timer
+  
+  function displayNames() {
+    img1.src = 'images/logo1.jpg';
+    img2.src = 'images/logo1.jpg';
+    img3.src = 'images/logo1.jpg';
+  
+    name1.textContent = shuffledNames[0];
+    name2.textContent = shuffledNames[1];
+    name3.textContent = shuffledNames[2];
+  
+    clicks1.textContent = '0';
+    clicks2.textContent = '0';
+    clicks3.textContent = '0';
+  }
+  
+  shuffleBtn.addEventListener('click', () => {
+    shuffledNames = shuffle(names).slice(0, 3);
+    displayNames();
+  });
+  
+  
+  </script>
+
+
+
+
+<script>
+
+const checkbox = document.getElementById("click-checkbox");
+const digitPlaceholder = document.querySelector(".digit-placeholder");
+const digit2Placeholder = document.querySelector(".digit2-placeholder");
+const digit3Placeholder = document.querySelector(".digit3-placeholder");
+const imagePlaceholder = document.querySelector(".image-placeholder");
+const images = [
+  "good1.gif",
+  "good2.gif",
+  "good3.gif",
+  "good4.gif",
+  "good5.gif",
+  "good6.gif",
+  "good7.gif",
+  "good8.gif",
+  "good9.gif",
+  "good10.gif",
+  "good11.gif",
+  "good12.gif",
+  "good13.gif",
+  "good14.gif",
+  "good15.gif",
+  "good16.gif",
+  "good17.gif",
+  "good18.gif",
+  "good19.gif",
+  "good20.gif",
+  "good21.gif",
+  "good22.gif",
+  "good23.gif",
+  "good24.gif",
+  "good25.gif",
+  "good26.gif",
+  "good27.gif",
+  "good28.gif",
+  "good29.gif",
+  "good30.gif",
+  "good31.gif",
+  "good32.gif",
+  "good33.gif",
+  "good34.gif",
+  "good35.gif",
+  "good36.gif",
+  "good37.gif",
+  "good38.gif",
+  "good39.gif",
+  "good40.gif",
+  "good41.gif",
+  "good42.gif",
+  "good43.gif",
+  "good44.gif",
+  "good45.gif",
+  "good46.gif",
+  "good47.gif",
+  "good48.gif",
+  "good49.gif",
+  "good50.gif",
+  "good51.gif",
+  "good52.gif",
+  "good53.gif",
+  "good54.gif",
+  "good55.gif",
+  "good56.gif",
+  "good57.gif",
+  "good58.gif",
+  "good59.gif",
+  "good60.gif",
+  "good61.gif",
+  "good62.gif",
+  "good63.gif",
+  "good64.gif",
+  "good65.gif",
+  "good66.gif",
+  "good67.gif",
+  "good68.gif",
+  "good69.gif",
+  "good70.gif",
+  "good71.gif",
+  "good72.gif",
+  "good73.gif",
+  "good74.gif",
+  "good75.gif",
+  "good76.gif",
+  "good77.gif",
+  "good78.gif",
+  "good79.gif",
+  "good80.gif",
+  "good81.gif",
+  "good82.gif",
+  "good83.gif",
+  "good84.gif",
+  "good85.gif",
+  "good86.gif",
+  "good87.gif",
+  "good88.gif",
+  "good89.gif",
+  "good90.gif",
+  "good91.gif",
+  "good92.gif",
+  "good93.gif",
+  "good94.gif",
+  "good95.gif",
+  "good96.gif",
+  "good97.gif",
+  "good98.gif",
+  "good99.gif",
+  "good100.gif",
+  "good101.gif",
+  "good102.gif",
+  "good103.gif",
+  "good104.gif",
+  "good105.gif",
+  "good106.gif",
+  "good107.gif",
+  "good108.gif",
+  "good109.gif",
+  "good110.gif",
+  "good111.gif",
+  "good112.gif",
+  "good113.gif",
+  "good114.gif",
+  "good115.gif",
+  "good116.gif",
+  "good117.gif",
+  "good118.gif",
+  "good119.gif",
+  "good120.gif",
+  "good121.gif",
+  "good122.gif",
+  "good123.gif",
+  "good124.gif",
+  "good125.gif",
+  "good126.gif",
+  "good127.gif",
+  "good128.gif",
+  "good129.gif",
+  "good130.gif",
+  "good131.gif",
+  "good132.gif",
+  "good133.gif",
+  "good134.gif",
+  "good135.gif",
+  "good136.gif",
+  "good137.gif",
+  "good138.gif",
+  "good139.gif",
+  "good140.gif",
+  "good141.gif",
+  "good142.gif",
+  "good143.gif",
+  "good144.gif",
+  "good145.gif",
+  "good146.gif",
+  "good147.gif",
+  "good148.gif",
+  "good149.gif",
+  "good150.gif",
+  "good151.gif",
+  "good152.gif",
+  "good153.gif",
+  "good154.gif",
+  "good155.gif",
+  "good156.gif",
+  "good157.gif",
+  "good158.gif",
+  "good159.gif",
+  "good160.gif",
+  "good161.gif",
+  "good162.gif",
+];
+const displayedImages = [];
+let leftClickNumber = 0;
+let rightClickNumber = 0;
+let scrollClickCount = 0;
+let timerId;
+
+
+
+
+// Function to increment the number on left-click
+function leftClickHandler() {
+  if (!checkbox.checked) {
+    return;
+  }
+  digitPlaceholder.textContent = ++leftClickNumber;
+  displayRandomImage();
+}
+
+// Function to display a random image from the "GOOD" folder
+function displayRandomImage() {
+  const unusedImages = images.filter((image) => !displayedImages.includes(image));
+  let imageName;
+  if (unusedImages.length === 0) {
+    displayedImages.length = 0;
+    imageName = images[Math.floor(Math.random() * images.length)];
+  } else {
+    imageName = unusedImages[Math.floor(Math.random() * unusedImages.length)];
+  }
+  displayedImages.push(imageName);
+  imagePlaceholder.innerHTML = `<img src="./GOOD/${imageName}" alt="${imageName}" style="height: 500px; width: 1370px;">`;
+}
+
+// Function to play the audio file on right-click
+function rightClickHandler(event) {
+  if (!checkbox.checked) {
+    return;
+  }
+  event.preventDefault();
+  document.getElementById("correct-sound").play();
+  displayRandomImage();
+  digit2Placeholder.textContent = ++rightClickNumber;
+}
+
+
+
+
+
+
+// Function to update scroll click count
+function updateScrollClickCount() {
+  if (!checkbox.checked) {
+    return;
+  }
+  digit3Placeholder.textContent = ++scrollClickCount;
+}
+
+// Event listeners
+document.addEventListener("contextmenu", rightClickHandler);
+document.addEventListener("mousedown", (event) => {
+  if (event.button === 0) {
+    leftClickHandler();
+  } else if (event.button === 2) {
+    rightClickHandler(event);
+} else if (event.button === 1) {
+    updateScrollClickCount(event);
+  }
+});
+ 
+
+// CSS for the footer
+const footer = document.querySelector(".footer");
+footer.style.position = "fixed";
+footer.style.bottom = "0";
+footer.style.left = "0";
+footer.style.right = "0";
+footer.style.textAlign = "center";
+footer.style.backgroundColor = "#f5f5f5";
+footer.style.padding = "20px";
+
+
+ 
+</script>
+
+
+
+</body>
+</html>

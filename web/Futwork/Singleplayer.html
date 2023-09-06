@@ -1,0 +1,997 @@
+
+
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+<head>
+    <title>
+        ScoreStation
+    </title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Grassroot football Development Kits">
+    <meta name="keywords" content="Children, football for boys and girls school, clubs play group, youtube, facebook ">
+    <meta name="author" content="KTI Technology.com">
+    <script>
+    function callDefaultFunction() {
+        var startScore = '0';
+        document.getElementById('currentScoreBoard').innerHTML = startScore;
+        document.getElementById('playerName').innerHTML = 'Khaleem';
+    }
+    window.onload = callDefaultFunction;
+    </script>
+
+
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 0;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
+
+
+.category-box {
+  position: relative;
+  width: 350px;
+  height: 180px;
+  border: 1px solid black;
+  text-align: center;
+  font-size: 20px;
+  line-height: 50px;
+  background-color: #ddd;
+  margin-left: 915px;
+  margin-top: -650px;
+}
+
+.category-title {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+  color: black;
+}
+
+.category-content {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  right: 0;
+  font-size: 70px;
+  font-weight: bold; 
+  text-align: center;
+}
+
+.score-container {
+  position: relative;
+  width: 350px;
+  height: 220px;
+  background-color: #5ce806;
+  margin-left: 915px;
+  border: #050604;
+  
+}
+
+.jump-scored-points-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  padding: 10px;
+  width: 100%;
+}
+
+.jump-scored-points-display {
+  font-size: 180px;
+  font-weight: bold;
+  color: white;
+  margin-top: 20px;
+  background-color: #1e90ff;
+  border-radius: 10px;
+  width: 230px;
+  height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.score-heading {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1e90ff;
+  margin-top: 10px;
+}
+
+.detail-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9f9f9;
+  padding: 10px;
+  width: 350px;
+  margin-left: 920px;
+  height: 180px;
+  margin-top: -140px;
+}
+
+.detail-content {
+  font-size: 48px;
+  font-weight: bold;
+  color: #1e90ff;
+  text-align: center;
+  margin-top: 30px;
+  
+}
+
+.detail-year-location {
+  margin-top: 50px;
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+}
+
+.square-set {
+  color: WHITE;
+  background: rgb(255, 255, 255);
+  position: relative;
+  border-radius: 15px;
+  font: Helvetica;
+  width: 890px;
+}
+
+.square {
+  background: green;
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 15px;
+  line-height: 80px;
+}
+
+.square-1 {
+  top: 5;
+  left: -30px;
+}
+
+.square-3 {
+  bottom: -15px;
+  right: -40px;
+}
+
+.square-4 {
+  bottom: 0px;
+  left: -20px;
+}
+
+#countdown-timer {
+  position: absolute;
+  top: 73px;
+  left: 143px;
+  transform: translate(-50%, -50%);
+  width: 280px;
+  height: 80px;
+  font-size: 80px;
+  text-align: center;
+  color: #ffffff;
+  background-color: #f00c0c;
+  border-radius: 10%;
+  border: 1px solid #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+/* Media Queries */
+@media screen and (max-width: 880px) {
+  .vertical-box {
+    width: 90%;
+    height: auto;
+    padding: 10px;
+  }
+
+  .category-box,
+  .score-container,
+  .square-set {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 880px) {
+  .vertical-box {
+    width: 90%;
+    height: auto;
+    padding: 10px;
+  }
+
+  .category-box,
+  .score-container,
+  .square-set {
+    width: 100%;
+  }
+}
+</style>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+    var goodImages = new Array();
+    //add here good images 
+    goodImages[0] = 'good1.gif';
+    goodImages[1] = 'good2.gif';
+    goodImages[2] = 'good3.gif';
+    goodImages[3] = 'good4.gif';
+    goodImages[4] = 'good5.gif';
+    goodImages[5] = 'good6.gif';
+    goodImages[6] = 'good7.gif';
+    goodImages[7] = 'good8.gif';
+    goodImages[8] = 'good9.gif';
+    goodImages[9] = 'good10.gif';
+    goodImages[10] = 'good11.gif';
+    goodImages[11] = 'good12.gif';
+    goodImages[12] = 'good13.gif';
+    goodImages[13] = 'good14.gif';
+    goodImages[14] = 'good15.gif';
+    goodImages[15] = 'good16.gif';
+    goodImages[16] = 'good17.gif';
+    goodImages[17] = 'good18.gif';
+    goodImages[18] = 'good19.gif';
+    goodImages[19] = 'good20.gif';
+    goodImages[20] = 'good21.gif';
+    goodImages[21] = 'good22.gif';
+    goodImages[22] = 'good23.gif';
+    goodImages[23] = 'good24.gif';
+    goodImages[24] = 'good24.gif';
+    goodImages[25] = 'good26.gif';
+    goodImages[26] = 'good27.gif';
+    goodImages[27] = 'good28.gif';
+    goodImages[28] = 'good29.gif';
+    goodImages[29] = 'good30.gif';
+    goodImages[30] = 'good31.gif';
+    goodImages[31] = 'good32.gif';
+    goodImages[32] = 'good33.gif';
+    goodImages[33] = 'good34.gif';
+    goodImages[34] = 'good35.gif';
+    goodImages[35] = 'good36.gif';
+    goodImages[36] = 'good37.gif';
+    goodImages[37] = 'good38.gif';
+    goodImages[38] = 'good39.gif';
+    goodImages[39] = 'good40.gif';
+    goodImages[40] = 'good41.gif';
+    goodImages[41] = 'good42.gif';
+    goodImages[42] = 'good43.gif';
+    goodImages[43] = 'good44.gif';
+    goodImages[44] = 'good44.gif';
+    goodImages[45] = 'good46.gif';
+    goodImages[46] = 'good47.gif';
+    goodImages[47] = 'good48.gif';
+    goodImages[48] = 'good49.gif';
+    goodImages[49] = 'good50.gif';
+    goodImages[50] = 'good51.gif';
+    goodImages[51] = 'good52.gif';
+    goodImages[52] = 'good53.gif';
+    goodImages[53] = 'good54.gif';
+    goodImages[54] = 'good55.gif';
+    goodImages[55] = 'good56.gif';
+    goodImages[56] = 'good57.gif';
+    goodImages[57] = 'good58.gif';
+    goodImages[58] = 'good59.gif';
+    goodImages[59] = 'good60.gif';
+    goodImages[60] = 'good61.gif';
+
+
+
+
+
+
+
+    var badImages = new Array();
+    //add here good images 
+    badImages[0] = '1.gif';
+    badImages[1] = '2.gif';
+    badImages[2] = '3.gif';
+    badImages[3] = '4.gif';
+    badImages[4] = '5.gif';
+    badImages[5] = '6.gif';
+    badImages[6] = '7.gif';
+    badImages[7] = '8.gif';
+    badImages[8] = '9.gif';
+    badImages[9] = '10.gif';
+    badImages[10] = '11.gif';
+    badImages[11] = '12.gif';
+    badImages[12] = '13.gif';
+    badImages[13] = '14.gif';
+    badImages[14] = '15.gif';
+    badImages[15] = '16.gif';
+    badImages[16] = '17.gif';
+    badImages[17] = '18.gif';
+    badImages[18] = '19.gif';
+    badImages[19] = '20.gif';
+    badImages[20] = '21.gif';
+    badImages[21] = '22.gif';
+    badImages[22] = '23.gif';
+    badImages[23] = '24.gif';
+    badImages[24] = '25.gif';
+    badImages[25] = '26.gif';
+    badImages[26] = '27.gif';
+    badImages[27] = '28.gif';
+    badImages[28] = '29.gif';
+    badImages[29] = '30.gif';
+    badImages[30] = '31.gif';
+    badImages[31] = '32.gif';
+    badImages[32] = '33.gif';
+    badImages[33] = '34.gif';
+    badImages[34] = '35.gif';
+    badImages[35] = '36.gif';
+    badImages[36] = '37.gif';
+    badImages[37] = '38.gif';
+    badImages[38] = '39.gif';
+    badImages[39] = '40.gif';
+    badImages[40] = '41.gif';
+    badImages[41] = '42.gif';
+    badImages[42] = '43.gif';
+    badImages[43] = '44.gif';
+    badImages[44] = '45.gif';
+    badImages[45] = '46.gif';
+    badImages[46] = '47.gif';
+    badImages[47] = '48.gif';
+    badImages[48] = '49.gif';
+    badImages[49] = '50.gif';
+    badImages[50] = '51.gif';
+    badImages[51] = '52.gif';
+    badImages[52] = '53.gif';
+    badImages[53] = '54.gif';
+    badImages[54] = '55.gif';
+    badImages[55] = '56.gif';
+    badImages[56] = '57.gif';
+    badImages[57] = '58.gif';
+    badImages[58] = '59.gif';
+    badImages[59] = '60.gif';
+    badImages[76] = '61.gif';
+
+
+
+
+    function showGoodImages() {
+        var j = 0
+        var p = goodImages.length;
+        var preBuffer = new Array()
+        for (i = 0; i < p; i++) {
+            preBuffer[i] = new Image()
+            preBuffer[i].src = goodImages[i]
+        }
+        var whichImage = Math.round(Math.random() * (p - 1));
+        document.getElementById("showImage").src = "GOOD\\" + goodImages[whichImage];
+
+    }
+
+
+    function showBadImages() {
+        var j = 0
+        var p = badImages.length;
+        var preBuffer = new Array()
+        for (i = 0; i < p; i++) {
+            preBuffer[i] = new Image()
+            preBuffer[i].src = badImages[i]
+        }
+        var whichImage = Math.round(Math.random() * (p - 1));
+        document.getElementById("showImage").src = "BAD\\" + badImages[whichImage];
+
+    }
+    </script>
+
+<body onmousedown="WhichButton(event)">
+
+
+    <div class="square-set">
+
+        <div id="countdown-timer" style="margin-top: 528px;">              
+            <div id="thumb" style="margin-top:100px; margin-left: 5px;">
+                <img src="images/Smile.jpg" width="70" height="70" id="playerImg">
+        <input name="photo" style="margin-left:5px; margin-top: -120px;" type="file" accept="image/*"
+            onchange="setProfileImage(this);">
+    </div></div>
+        <img src="" id="showImage" style="background-color:black;width:100%;height:640px; 
+        border-bottom-right-radius: 10px; border-bottom-left-radius: 10px;">
+        <div id="gif-placeholder"></div>
+
+        <figure class="square square-3" style="width: 280px;">
+            <div id="countdown" style="position: relative; font-size: 30px;
+      text-align: center; ">
+
+                <div style="display: inline-block;">
+                    <input type="checkbox" id="timer30s" name="timer30s" onclick="timer30()">
+                    <label for="timer30" id="30sec">30s</label>
+                    <input type="checkbox" id="timer60s" name="timer60s" onclick="timer60();">
+                    <label for="timer60" id="60sec">60s</label>
+
+                    <div id="countdown-display"></div>
+                    <div id="count-display"></div>
+                </div>
+            </div>
+    </div>
+
+    </div>
+
+    </figure>
+    <script>
+    function timer30() {
+
+        document.getElementById("timer60s").checked = false;
+
+
+
+    }
+
+    function timer60() {
+        // Get the checkbox
+
+        document.getElementById("timer30s").checked = false;
+
+
+
+    }
+    </script>
+
+
+
+    <div class="main-container">
+        <div class="vertical-box">
+            <div class="container">
+                <div class="category-box">
+
+                    <div class="toggle-buttons">
+                        <div class="category-content">
+                            <div class="category-item" style="margin-bottom: 60px;" id="club_name">FCSparks</div>
+
+                            <div class="category-title" style="margin-top: 10px;">Club Name</div>
+
+                        </div>
+                    </div>
+
+                    <button id="prev-button">&lt;</button>
+                    <button id="next-button">&gt;</button>
+                </div>
+            </div>
+            <br>
+            <div class="score-container" style="margin-top:10px;">
+                <div class="jump-scored-points-container">
+                    <div class="jump-scored-points-display" id="currentScoreBoard">0</div>
+                    <div class="score-heading">Score</div>
+                </div>
+            </div>
+            <div class="name-container" style="margin-top: 40px;">
+
+                <div class="score-heading" style="font-size:30px; margin-left: 990px;" id="playerName">Name</div>
+
+            </div>
+            <div id="gameEnd" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content" style="width:20px;height:50px;background-color:black; margin-left: 4opx;">
+                    
+                    <div class="row" style="color:yellow;text-align:center;font-size:15px;">Game End </div><br>
+
+                    <div class="row" style="color:yellow;text-align:center;font-size:15px;">
+                        <button value="Play Next" onclick="hideDialog();" style="margin-left: 915px;">Play Next</button>
+
+            </div>
+            <script>
+            function hideDialog() {
+                document.getElementById("gameEnd").style.display = "none";
+            }
+            </script>
+            <audio id="goodSoundPlay1" src="3CANPLAY\\correct.wav" preload="auto"></audio>
+            <audio id="goodSoundPlay2" src="3CANPLAY\\correct.wav" preload="auto"></audio>
+            <audio id="goodSoundPlay3" src="3CANPLAY\\correct.wav" preload="auto"></audio>
+            <audio id="badSoundPlay" src="3CANPLAY\\Error.wav" preload="auto"></audio>
+             <audio id="badSoundPlay2" src="3CANPLAY\\Error.wav" preload="auto"></audio>
+            <script>
+            function readURL(evt)
+
+            alert('e');
+            var tgt = evt.target || window.event.srcElement,
+                files = tgt.files;
+
+            // FileReader support
+            if (FileReader && files && files.length) {
+                var fr = new FileReader();
+                fr.onload = function() {
+                    document.getElementById(playerImg).src = fr.result;
+                }
+                fr.readAsDataURL(files[0]);
+            }
+
+
+
+
+
+
+
+
+
+            // Not supported
+            else {
+                // fallback -- perhaps submit the input to an iframe and temporarily store
+                // them on the server until the user's session ends.
+            }
+            </script>
+            <script>
+            var playTimer = 0;
+            var leftPersonScore =parseInt('0') ;
+            var playfor30s = 'false';
+            var playfor60s = 'false';
+
+            function startToPlayGame() {
+                playfor30s = 'false';
+                playfor60s = 'false';
+              
+                if (document.getElementById("timer30s").checked == true) {
+                    playTimer = 30;
+                    playfor30s = 'true';
+                } else if (document.getElementById("timer60s").checked == true) {
+                    playTimer = 60;
+                    playfor60s = 'true';
+                }
+                startToPlay = 'true';
+                var y = setInterval(function() {
+
+                    playTimer = playTimer - 1;
+                    if (playfor30s == 'true') {
+                        document.getElementById("30sec").innerHTML = playTimer + "s";
+                    } else if (playfor60s == 'true') {
+                        document.getElementById("60sec").innerHTML = playTimer + "s";
+                    }
+
+                    if (playTimer == 0) {
+                        document.getElementById("30sec").innerHTML = "30s";
+                        document.getElementById("60sec").innerHTML = "60s";
+                        startToPlay = 'false';
+
+                        // var player1Name = document.getElementById("player1Name").innerHTML;
+                        // var player1Score = document.getElementById("leftPersonScore").innerHTML;
+
+                        // var player2Name = document.getElementById("player2Name").innerHTML;
+                        // var player2Score = document.getElementById("rightPersonScore").innerHTML;
+
+                        // var player3Name = document.getElementById("player3Name").innerHTML;
+                        // var player3Score = document.getElementById("centerPersonScore").innerHTML;
+
+                        // saveScoreToDataBase(gameID, player1Name, player1Score, player2Name, player2Score, player3Name, player3Score);
+                        var scoree = document.getElementById("currentScoreBoard").innerHTML;
+                        var plyaerName = document.getElementById("playerName").innerHTML;
+                        saveScoreToDataBase(plyaerName, scoree);
+                        clearInterval(y);
+                    }
+
+                }, 1000);
+            }
+              var playBad=false;
+            // Add event listener on keydown
+            document.addEventListener('keydown', (event) => {
+                // var name = event.key;
+                // var code = event.code;
+                // // Alert the key name and key code on keydown
+                // alert(`Key pressed ${name} \r\n Key code value: ${code}`);
+                if (startToPlay == 'true') {
+                    if(playBad==false){
+                        playBad=true;
+                    document.getElementById('badSoundPlay').play();
+                    }else{
+                        playBad=false;
+                              document.getElementById('badSoundPlay2').play(); 
+                    }
+                    showBadImages();
+                }
+
+            }, false);
+  var playSound=false;
+            function WhichButton(event) {
+                if (startToPlay == 'true') {
+                     
+                    if (event.button == 0) {
+                        leftPersonScore = leftPersonScore + 1;
+                        document.getElementById("currentScoreBoard").innerHTML = leftPersonScore;
+                        if(playSound==false){
+                            playSound=true;
+                        document.getElementById('goodSoundPlay1').play();
+                        }else{
+                              playSound=false;
+                        document.getElementById('goodSoundPlay2').play();  
+                        }
+
+
+                    }
+
+
+                    showGoodImages();
+                }
+            }
+
+
+
+
+
+            function startPlay() {
+                if (document.getElementById("timer60s").checked == false && document.getElementById("timer30s")
+                    .checked == false) {
+                    alert("Please Select Timer CheckBox");
+                    return;
+                }
+
+
+                var modal = document.getElementById("myModal");
+                modal.style.display = "block";
+                var time = 8;
+                var x = setInterval(function() {
+
+                    time = time - 1;
+                    document.getElementById("Timer").innerHTML = time;
+                    if (time == 0) {
+
+                        startToPlayGame();
+                        document.getElementById("Timer").innerHTML = '8';
+                        modal.style.display = "none";
+                        time = 8;
+
+                        clearInterval(x);
+                    }
+
+                }, 1000);
+
+
+
+
+            }
+
+            function GetNextPlayerInfo() {
+              leftPersonScore=0;
+                var playerName = document.getElementById('playerName').innerHTML;
+
+                $.ajax({
+                    type: 'POST',
+                    url: "NextPlayer.php",
+                    data: {
+                        'playerName': playerName
+                    },
+                    success: function(data) {
+                        document.getElementById('currentScoreBoard').innerHTML = data;
+                        leftPersonScore=parseInt(data);
+                    },
+                    error: function(xhr, status, error) {
+                        //  alert(xhr.responseText);
+                    }
+                });
+
+                $.ajax({
+                    type: 'POST',
+                    url: "NextPlayerProfile.php",
+                    data: {
+                        'playerName': playerName
+                    },
+                    success: function(data) {
+                    
+                        document.getElementById('playerImg').src = "upload/"+data;
+                    },
+                    error: function(xhr, status, error) {
+                        //  alert(xhr.responseText);
+                    }
+                });
+
+            }
+
+            function saveScoreToDataBase(playerName, score) {
+
+                $.ajax({
+                    type: 'POST',
+                    url: "save_single_player_score.php",
+                    data: {
+
+                        'playerName': playerName,
+                        'player1Score': score
+
+                    },
+                    success: function(data) {
+                        if (data == 'successfully') {
+
+
+                            var modal = document.getElementById("gameEnd");
+                            modal.style.display = "block";
+
+                        }
+
+
+                    },
+                    error: function(xhr, status, error) {
+                        //  alert(xhr.responseText);
+                    }
+                });
+            }
+            </script>
+
+            <div class="detail-box">
+                <div class="detail-content">
+
+                    <div class="toggle-buttons">
+
+          
+                        <script>
+                        function setProfileImage(y) {
+                            document.getElementById('playerImg').src = window.URL.createObjectURL(y.files[0]);
+
+
+
+                            var fd = new FormData();
+
+                            var files = y.files;
+
+                            // Check file selected or not
+                            if (files.length > 0) {
+
+                                fd.append('file', files[0]);
+                                var playerName = document.getElementById('playerName').innerHTML;
+                                fd.append('playerName', playerName);
+
+                                $.ajax({
+                                    url: 'UploadProfileImage.php',
+                                    type: 'post',
+                                    data: fd,
+                                    dataType: 'json',
+                                    contentType: false,
+                                    processData: false,
+                                    success: function(response) {
+                                        if (response.status == 1) {
+                                            var extension = response.extension;
+                                            var path = response.path;
+
+                                            $('.prevel').hide();
+                                            if (extension == 'pdf' || extension == 'docx') {
+                                                $("#fileprev").attr("href", path);
+                                                $("#fileprev").show();
+                                            } else {
+                                                $("#imgprev").attr("src", path);
+                                                $("#imgprev").show();
+                                            }
+
+                                        } else {
+                                            alert('File not uploaded');
+                                        }
+                                    }
+                                });
+                            } else {
+                                alert("Please select a file.");
+                            }
+
+
+
+
+
+                        }
+                        </script>
+
+                        <div class="detail-content">
+                        <div class="detail-year-location" id="player_address">15YR, St Leonards On Sea.</div>
+                           
+                        <input type="button" value="Start Play"onclick="startPlay();" style="width:80px;height:30px;"></div>
+
+
+                        </div>
+                        <script>
+                        let prevButton = document.getElementById("prev-button");
+                        let nextButton = document.getElementById("next-button");
+
+                        let categoryContent = document.querySelector(".category-content");
+                        let detailContent = document.querySelector(".detail-content");
+                        let detailYearLocation = document.querySelector(".detail-year-location");
+
+                        let categoryList = ["FCSparks", "FCSparks", "FCSparks", "FCSparks", "FCSparks", "FCSparks",
+                            "FCSparks", "FCSparks", "FCSparks", "FCSparks", "FCSparks", "FCSparks", "FCSparks",
+                            "FCSparks", "FCSparks", "FCSparks", "FCSparks", "FCSparks", "FCSparks", "FCSparks"
+                        ];
+                        let nameList = ["Khaleem", "Madison", "Leona", "Aleena", "Olivier N", "Blake", "Olivier",
+                            "Elin", "Erin", "Amir", "Suzanna", "Kien", "Toby", "Jameela", "Faraz", "Frank"
+                        ];
+                        let ageLocationList = ["YR 7, St Leonards On Sea.", "YR 7, Hastings.", "YR 7, Hastings.",
+                            "YR 7, Bexhill.", "YR 7, London.", "YR 7, Hong Kong.", "YR 7, UK.", "YR 7, UK.",
+                            "YR 7, UK.", "YR 7, UK.", "YR 7, UK.", "YR 7, UK.", "YR 7, Moscow.", "YR 7, Qatar.",
+                            "YR 7, Nigeria.", "YR 7, Warsaw"
+                        ];
+                        let index = 0;
+
+                        prevButton.addEventListener("click", () => {
+                            if (index > 0) {
+                                index--;
+                            } else {
+                                index = nameList.length - 1;
+                            }
+
+                            document.getElementById('club_name').innerHTML = categoryList[index];
+                            document.getElementById('playerName').innerHTML = nameList[index];
+                            document.getElementById('player_address').innerHTML = ageLocationList[index];
+                            //    categoryContent.innerHTML = `<div class="category-item">${categoryList[index]}</div>`;
+                            //    detailContent.innerHTML = `<span>${nameList[index]}</span>`;
+                            //   detailYearLocation.innerHTML = ageLocationList[index];
+                            GetNextPlayerInfo() ;
+                        });
+
+                        nextButton.addEventListener("click", () => {
+                            if (index < nameList.length - 1) {
+                                index++;
+                            } else {
+                                index = 0;
+                            }
+
+
+                            document.getElementById('club_name').innerHTML = categoryList[index];
+                            document.getElementById('playerName').innerHTML = nameList[index];
+                            document.getElementById('player_address').innerHTML = ageLocationList[index];
+                            GetNextPlayerInfo() ;
+
+                            // categoryContent.innerHTML = `<div class="category-item">${categoryList[index]}</div>`;
+                            // detailContent.innerHTML = `<span>${nameList[index]}</span>`;
+                            // detailYearLocation.innerHTML = ageLocationList[index];
+                        });
+                        </script>
+
+
+
+
+                        <script>
+                        const countdown30 = document.getElementById('timer30');
+                        const countdown60 = document.getElementById('timer60');
+                        const countdownDisplay = document.getElementById('countdown-display');
+                        const countDisplay = document.getElementById('count-display');
+                        let interval;
+                        let countdown;
+                        let mouseClicks = 0;
+
+                        function startCountdown(duration) {
+                            clearInterval(interval);
+                            countdown = duration;
+                            interval = setInterval(function() {
+                                countdownDisplay.textContent = `Time remaining: ${countdown}`;
+                                if (countdown == 0) {
+                                    clearInterval(interval);
+                                    reset();
+                                }
+                                countdown--;
+                            }, 1000);
+                        }
+
+                        function reset() {
+                            countdownDisplay.textContent = "";
+                            countdown30.checked = false;
+                            countdown60.checked = false;
+                        }
+
+                        countDisplay.addEventListener('mousedown', function() {
+                            mouseClicks++;
+                            countDisplay.textContent = `Mouse clicks: ${mouseClicks}`;
+                        });
+
+                        countdown30.addEventListener('click', function() {
+                            reset();
+                            startCountdown(30);
+                        });
+
+                        countdown60.addEventListener('click', function() {
+                            reset();
+                            startCountdown(60);
+                        });
+
+
+                        //   function playSound(audioFile) {
+                        //   let audio = new Audio(audioFile);
+                        //   audio.play();
+                        //   let count = parseInt(document.querySelector('.jump-scored-points-display').innerHTML);
+                        //   countDisplay.textContent = count + 1;
+                        // }
+
+
+                        function displayGif(folder) {
+                            const gifList = ['gif1.gif', 'gif2.gif', 'gif3.gif', 'gif4.gif', 'gif5.gif', 'gif6.gif',
+                                'gif7.gif', 'gif8.gif', 'gif9.gif', 'gif10.gif', 'gif11.gif', 'gif12.gif',
+                                'gif13.gif', 'gif14.gif', 'gif15.gif', 'gif16.gif', 'gif17.gif', 'gif18.gif',
+                                'gif19.gif', 'gif20.gif', 'gif21.gif', 'gif22.gif', 'gif23.gif', 'gif23.gif',
+                                'gif24.gif', 'gif25.gif', 'gif26.gif', 'gif27.gif', 'gif28.gif', 'gif29.gif',
+                                'gif30.gif', 'gif31.gif', 'gif32.gif', 'gif33.gif', 'gif34.gif', 'gif35.gif',
+                                'gif36.gif', 'gif37.gif', 'gif38.gif', 'gif39.gif', 'gif40.gif', 'gif41.gif',
+                                'gif42.gif', 'gif43.gif', 'gif44.gif', 'gif45.gif', 'gif46.gif', 'gif47.gif',
+                                'gif48.gif', 'gif49.gif', 'gif50.gif', 'gif51.gif', 'gif52.gif', 'gif53.gif',
+                                'gif54.gif', 'gif55.gif', 'gif56.gif', 'gif57.gif', 'gif58.gif', 'gif59.gif',
+                                'gif60.gif', 'gif61.gif', 'gif62.gif', 'gif63.gif', 'gif64.gif', 'gif65.gif',
+                                'gif66.gif', 'gif67.gif', 'gif68.gif', 'gif69.gif', 'gif70.gif', 'gif71.gif',
+                                'gif72.gif', 'gif73.gif', 'gif74.gif', 'gif75.gif', 'gif76.gif', 'gif77.gif',
+                                'gif78.gif', 'gif79.gif', 'gif80.gif', 'gif81.gif', 'gif82.gif', 'gif83.gif',
+                                'gif84.gif', 'gif85.gif', 'gif86.gif', 'gif87.gif', 'gif88.gif', 'gif89.gif',
+                                'gif90.gif', 'gif91.gif', 'gif92.gif', 'gif93.gif', 'gif94.gif', 'gif95.gif',
+                                'gif96.gif', 'gif97.gif', 'gif98.gif', 'gif99.gif', 'gif100.gif', 'gif101.gif',
+                                'gif102.gif', 'gif103.gif', 'gif104.gif', 'gif105.gif', 'gif106.gif', 'gif107.gif',
+                                'gif108.gif', 'gif109.gif', 'gif110.gif', 'gif111.gif', 'gif112.gif', 'gif113.gif',
+                                'gif114.gif', 'gif115.gif', 'gif116.gif', 'gif117.gif', 'gif118.gif', 'gif119.gif',
+                                'gif120.gif', 'gif121.gif', 'gif122.gif', 'gif123.gif', 'gif124.gif', 'gif125.gif',
+                                'gif126.gif', 'gif127.gif', 'gif128.gif', 'gif129.gif', 'gif130.gif', 'gif131.gif',
+                                'gif132.gif', 'gif133.gif', 'gif134.gif', 'gif135.gif', 'gif136.gif', 'gif137.gif',
+                                'gif138.gif', 'gif139.gif', 'gif140.gif', 'gif141.gif', 'gif142.gif', 'gif143.gif',
+                                'gif144.gif', 'gif145.gif', 'gif146.gif', 'gif147.gif', 'gif148.gif', 'gif149.gif',
+                                'gif150.gif', 'gif151.gif', 'gif152.gif', 'gif153.gif', 'gif154.gif', 'gif155.gif',
+                                'gif156.gif', 'gif157.gif', 'gif158.gif', 'gif159.gif', 'gif160.gif', 'gif161.gif',
+                                'gif162.gif', 'gif163.gif', 'gif164.gif'
+                            ]; // list of gif files in folder
+                            const gif = gifList[Math.floor(Math.random() * gifList.length)];
+                            const img = `<img src="./${folder}/${gif}" width="800" height="520">`;
+                            const gifPlaceholder = document.createElement('div');
+                            gifPlaceholder.setAttribute('class', 'gif-placeholder');
+                            gifPlaceholder.innerHTML = img;
+                            const wrongText = document.createElement('p');
+                            wrongText.textContent = 'WRONG';
+                            wrongText.style.fontSize = '40px';
+                            wrongText.style.color = 'red';
+                            gifPlaceholder.appendChild(wrongText);
+                            document.querySelector('.square-set').appendChild(gifPlaceholder);
+                            setTimeout(() => {
+                                document.querySelector('.square-set').removeChild(gifPlaceholder);
+                            }, 5000);
+                        }
+
+                        document.addEventListener('keydown', function(event) {
+                            if (event.keyCode == 32) { // spacebar
+
+                                event.preventDefault(); // prevent the default behavior of scrolling up
+                                playSound('Error.wav');
+                                displayGif('BAD');
+                            }
+                        });
+
+
+
+                        document.addEventListener('click', function(event) {
+                            if (event.button === 0) { // left click
+                                playSound('Correct.wav');
+                                displayGif('GOOD');
+                                let scoreDisplay = document.querySelector('.jump-scored-points-display');
+                                scoreDisplay.innerHTML = parseInt(scoreDisplay.innerHTML) + 1;
+                            } else if (event.button === 2) { // right click
+                                playSound('Correct.wav');
+                                displayGif('GOOD');
+                                let scoreDisplay = document.querySelector('.jump-scored-points-display');
+                                scoreDisplay.innerHTML = parseInt(scoreDisplay.innerHTML) + 2;
+                            }
+                        });
+                        </script>
+                        <div id="myModal" class="modal">
+
+                            <!-- Modal content -->
+          
+                                <div class="row" style="color:rgb(17, 17, 2);text-align:center;font-size:25px; margin-top: -10px;">Start In</div>
+                                
+
+                                <div class="row" style="color:#048b04;text-align:center;font-size:35px;"><label
+                                        id="Timer">8</label>
+                                </div>
+                            </div>
+
+                        </div>
+                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+                        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<div style="text-align:right;position:fixed;z-index:9999999;bottom:0;width:auto;right:1%;cursor:pointer;line-height:0;display:block!important"><a title="Hosted on free web hosting 000webhost.com. Host your own website for FREE." target="_blank" href="https://www.000webhost.com/?utm_source=000webhostapp&utm_campaign=000_logo&utm_medium=website&utm_content=footer_img"><img src="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png" alt="www.000webhost.com"></a></div><script>function getCookie(t){for(var e=t+"=",n=decodeURIComponent(document.cookie).split(";"),o=0;o<n.length;o++){for(var i=n[o];" "==i.charAt(0);)i=i.substring(1);if(0==i.indexOf(e))return i.substring(e.length,i.length)}return""}getCookie("hostinger")&&(document.cookie="hostinger=;expires=Thu, 01 Jan 1970 00:00:01 GMT;",location.reload());var wordpressAdminBody=document.getElementsByClassName("wp-admin")[0],notification=document.getElementsByClassName("notice notice-success is-dismissible"),hostingerLogo=document.getElementsByClassName("hlogo"),mainContent=document.getElementsByClassName("notice_content")[0];if(null!=wordpressAdminBody&&0<notification.length&&null!=mainContent){var googleFont=document.createElement("link");googleFontHref=document.createAttribute("href"),googleFontRel=document.createAttribute("rel"),googleFontHref.value="https://fonts.googleapis.com/css?family=Roboto:300,400,600,700",googleFontRel.value="stylesheet",googleFont.setAttributeNode(googleFontHref),googleFont.setAttributeNode(googleFontRel);var css="@media only screen and (max-width: 576px) {#main_content {max-width: 320px !important;} #main_content h1 {font-size: 30px !important;} #main_content h2 {font-size: 40px !important; margin: 20px 0 !important;} #main_content p {font-size: 14px !important;} #main_content .content-wrapper {text-align: center !important;}} @media only screen and (max-width: 781px) {#main_content {margin: auto; justify-content: center; max-width: 445px;}} @media only screen and (max-width: 1325px) {.web-hosting-90-off-image-wrapper {position: absolute; max-width: 95% !important;} .notice_content {justify-content: center;} .web-hosting-90-off-image {opacity: 1;}} @media only screen and (min-width: 769px) {.notice_content {justify-content: space-between;} #main_content {margin-left: 5%; max-width: 445px;} .web-hosting-90-off-image-wrapper {position: absolute; display: flex; justify-content: center; width: 50%; margin-left: 45%;}} .web-hosting-90-off-image {max-width: 90%;} .content-wrapper {min-height: 454px; display: flex; flex-direction: column; justify-content: center; z-index: 5} .notice_content {display: flex; align-items: center;} * {-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;} .upgrade_button_red_sale{box-shadow: 0 2px 4px 0 rgba(255, 69, 70, 0.2); width: 264px; border: 0; border-radius: 3px; background-color: #FF5C62 !important; padding: 15px 55px !important; font-family: 'Roboto', sans-serif; font-size: 16px; font-weight: 600; color: #ffffff;} .upgrade_button_red_sale:hover{color: #ffffff !important; background: #d10303 !important;}",style=document.createElement("style"),sheet=window.document.styleSheets[0];style.styleSheet?style.styleSheet.cssText=css:style.appendChild(document.createTextNode(css)),document.getElementsByTagName("head")[0].appendChild(style),document.getElementsByTagName("head")[0].appendChild(googleFont);var button=document.getElementsByClassName("upgrade_button_red")[0],link=button.parentElement;link.setAttribute("href","https://www.hostinger.com/hosting-starter-offer?utm_source=000webhost&utm_medium=panel&utm_campaign=000-wp"),link.innerHTML='<button class="upgrade_button_red_sale">Claim Deal</button>',(notification=notification[0]).setAttribute("style","padding-bottom: 0; padding-top: 5px; background-color: #040713; background-size: cover; background-repeat: no-repeat; color: #ffffff; border-left-color: #040713;"),notification.className="notice notice-error is-dismissible";var mainContentHolder=document.getElementById("main_content");mainContentHolder.setAttribute("style","padding: 0;"),hostingerLogo[0].remove();var h1Tag=notification.getElementsByTagName("H1")[0];h1Tag.className="000-h1",h1Tag.innerHTML="Black Friday",h1Tag.setAttribute("style",'color: white; font-family: "Roboto", sans-serif; font-size: 48px; font-weight: 700;');var h2Tag=document.createElement("H2");h2Tag.innerHTML="Up to 90% off 4-year hosting plans + free domain, SSL & DDoS protection",h2Tag.setAttribute("style",'color: white; margin: 10px 0 15px 0; font-family: "Roboto", sans-serif; font-size: 16px; font-weight: 400; line-height: 1;'),h1Tag.parentNode.insertBefore(h2Tag,h1Tag.nextSibling);var paragraph=notification.getElementsByTagName("p")[0];paragraph.innerHTML="$<span style='font-size: 80px;'>2.49</span>/mo",paragraph.setAttribute("style",'font-family: "Roboto", sans-serif; font-size: 48px; font-weight: 700; margin: 0;');var list=notification.getElementsByTagName("UL")[0];list.remove();var org_html=mainContent.innerHTML,new_html='<div class="content-wrapper">'+mainContent.innerHTML+'</div><div class="web-hosting-90-off-image-wrapper">
+<img class="web-hosting-90-off-image" src="https://cdn.000webhost.com/000webhost/promotions/bf-2022-bottom-banner.png">
+</div>';mainContent.innerHTML=new_html;var saleImage=mainContent.getElementsByClassName("web-hosting-90-off-image")[0]}
+</script>
+</body>
+
+</html>

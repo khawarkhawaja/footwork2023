@@ -1,0 +1,8 @@
+img(8).gif
+img(14).gif
+img(3).gif
+img(7).gif
+img(6).gif
+img(10).gif
+img(1).gif
+img(48).gif
